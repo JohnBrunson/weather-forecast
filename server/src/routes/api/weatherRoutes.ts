@@ -1,6 +1,6 @@
 //front end sends a fetch request. This should return a valid JSON object to the front-end.
 import { Router } from 'express';
-import weatherService from '../../service/weatherService';
+import weatherService from '../../service/weatherService.js';
 //import { resolveObjectURL } from 'buffer';
 const router = Router();
 
@@ -11,13 +11,13 @@ const router = Router();
 // JB NOTE: Undo the underscores if you expect this work. :-)
 router.post('/', async(req, res) => {
   // TODO: GET weather data from city name
-
 try {
   const {cityName} = req.body;
+  console.log(`City name received as ${cityName}`);
   const weatherData = await weatherService.getWeatherForCity(cityName);
   res.json(weatherData);
 } catch (error) {
-  
+  console.log (`Error from POST Request in weatherRoutes:`, error);  
 }
   // TODO: save city to search history
 
