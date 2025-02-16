@@ -1,7 +1,7 @@
 // Will be used in historyService Routes
-//import fs from "fs/promises";
+// import fs from "fs/promises";
 // For the bonus question
-//import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 // TODO: Define a City class with name and id properties
 
@@ -14,12 +14,12 @@
 //   }
 // }
 // TODO: Complete the HistoryService class
-class HistoryService {
-  // TODO: Define a read method that reads from the db.json file
-  // JB NOTE: should return valid JSON.
-  // private async read() {
+// class HistoryService {
+//   // TODO: Define a read method that reads from the db.json file
+//   // JB NOTE: should return valid JSON.
+//   private async read() {
     
-  //   }
+//     }
 
   // TODO: Define a write method that writes the updated cities array to the db.json file
   //JB NOTE: This array should be ready to be written
@@ -35,6 +35,6 @@ class HistoryService {
 
   // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
   // async removeCity(id: string) {}
-}
+// }
 
-export default new HistoryService();
+// export default new HistoryService();
