@@ -42,57 +42,9 @@ class WeatherService {
         console.log('API_BASE_URL:', this.baseURL);
         console.log('API_KEY:', this.apiKey);
       }
-  // TODO: Create fetchLocationData method
-//   private async fetchLocationData(query: string): Promise<Coordinates>{
-// // More details from Xpert Learning
-// //After setting up the properties, implement the fetchLocationData method. This method will be responsible for making the API call to get location data based on a query.
-// try {
-//   const response = await fetch(`${this.baseURL}/data/2.5/forecast?q=${query}&appid=${this.apiKey}`);
-//   if (!response.ok) {
-//     throw new Error('Network Response was not OK.')
-//   }
-//   const data = await response.json();
-//   //return this.destructureLocationData(data);
-//   console.log (data);
-//   // dummy return value
-//   return (data);
-// }catch (err){
-//   console.error (`ERROR: There was a problem with the fetchLocationData method:`,)
-//   throw err;
-// }
-//   }
-  
-  // TODO: Create destructureLocationData method. Seems its only job is to return latitude/Longitude data.
-  // private destructureLocationData(locationData: any): Coordinates {
-  //     // console.log (`Location Data -- Latitude: ${locationData[0].lat}`)
-  //     // console.log (`Location Data -- Longitude: ${locationData[0].lon}`)
-  //     // return (!locationData) ? new Error (`DESTRUCTURE LOCATION DATA ERROR:`) : 
-  //     // {
-  //     //   lat: locationData[0].lat, 
-  //     //   long: locationData[0].lon
-  //     // }
-  //     console.log (`Location Data -- Latitude: ${locationData[0].lat}`);
-  //     console.log (`Location Data -- Longitude: ${locationData[0].lon}`);
-  // };
-
-  // TODO: Create buildGeocodeQuery method. Literally only here to make a geocode query. In the final build... this is omitted. It's working... so I'm not as concerned with 
-  // private buildGeocodeQuery(city: string): string {
-  // return `${this.baseURL}/geocode?q=${city}&appid=${this.apiKey}`;
-  // }
 
   // TODO: Create buildWeatherQuery method. Here to build the weather query using coordinates.
   private buildWeatherQuery(coordinates: Coordinates): string {
-    // try {
-    //   const response = await fetch (
-    //     `${this.baseURL}/data/2.5/forecast?q=${lat}&${lon}&appid=${this.apiKey}`
-    //     const weatherData = response.json;
-    //     console.log(weatherData);
-    //     return weatherData;
-    //   )
-    // }catch (err) {
-    //   console.log (`ERROR from Build Weather Query:`, err)
-    // }
-    // return
     console.log (`Build Weather Query says: ${this.baseURL}/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.long}&units=imperial&appid=${this.apiKey}`)
     return `${this.baseURL}/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.long}&units=imperial&appid=${this.apiKey}`;
   }
@@ -133,7 +85,8 @@ class WeatherService {
   
   // TODO: Build parseCurrentWeather method
     private parseCurrentWeather(response: any): Weather {
-    console.log('Full response data:', response);
+    //Uncomment if more troubleshooting is needed for this function.
+      //console.log('Full response data:', response);
   
     // Ensure the response has the expected structure
     if (!response || !response.list || !response.list[0] || !response.city) {
@@ -181,7 +134,8 @@ class WeatherService {
     const weatherData = await this.fetchWeatherData(coordinates);
     console.log("Weather data fetched, moving to parsing current weather...");
     const currentWeather = this.parseCurrentWeather(weatherData);
-    console.log("Current weather parsed:", currentWeather);
+    //console.log("Current weather parsed:", currentWeather);
+    console.log ("Current Weather Parsed.")
     const forecastArray = this.buildForecastArray(weatherData.list);
     //console.log("Forecast array built:", forecastArray);
     console.log("Forecast Array Built.")
